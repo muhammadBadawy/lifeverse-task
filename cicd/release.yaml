@@ -1,0 +1,20 @@
+steps:
+  # Step 1: Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: 
+      - 'build'
+      - '-t'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/lifeverse/animal_classifier:latest'  # Update with your repo and image name
+      - '.'
+  
+  # Step 2: Push the Docker image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/lifeverse/animal_classifier:latest'  # Update with your repo and image name
+  
+# Optionally define images to be used as artifacts
+images:
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/lifeverse/animal_classifier:latest'  # Update with your repo and image name
+
+timeout: '1200s'  # Optional: Increase timeout if needed
