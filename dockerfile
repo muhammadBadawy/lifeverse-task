@@ -1,11 +1,7 @@
 FROM python:3.9-slim
 
 # Set environment variables
-ENV PYTHONUNBUFFERED=1 \
-    POETRY_VERSION=1.5.1 \
-    POETRY_HOME="/opt/poetry" \
-    POETRY_VIRTUALENVS_IN_PROJECT=true \
-    PATH="$POETRY_HOME/bin:$PATH"
+ENV PYTHONUNBUFFERED=1
 
 # Set the working directory
 WORKDIR /app
