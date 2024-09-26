@@ -1,23 +1,29 @@
-# Use the official Python image as a base
 FROM python:3.9-slim
 
 # Set environment variables
-ENV PYTHONUNBUFFERED=1
+ENV PYTHONUNBUFFERED=1 \
+    POETRY_VERSION=1.5.1 \
+    POETRY_HOME="/opt/poetry" \
+    POETRY_VIRTUALENVS_IN_PROJECT=true \
+    PATH="$POETRY_HOME/bin:$PATH"
 
-# Copy the poetry.lock and pyproject.toml files
-COPY ./* ./
+# Set the working directory
+WORKDIR /app
 
 # Install Poetry
-RUN pip install poetry
+RUN pip install --no-cache-dir "poetry"
 
-# Install dependencies
-RUN poetry install --no-dev
+# Copy the project files to the container
+COPY pyproject.toml poetry.lock /app/
+COPY . /app/
 
-# Copy the rest of the application code
-COPY . .
+# Install project dependencies using Poetry
+RUN poetry install --no-dev --no-interaction --no-ansi
 
-# Download the model and labels
-RUN python -m poetry run python -c "from model_loader import initialize_model; initialize_model()"
+RUN poetry run python -c "from model_loader import initialize_model; initialize_model()"
 
-# Optionally set the entrypoint for the container (if applicable)
-# CMD ["python", "flask_app.py", "--host=0.0.0.0", "--port=8501"]  # Uncomment if you want to run the app in the container
+# Expose the port Flask will run on
+EXPOSE 5000
+
+# Set the command to run the Flask app
+CMD ["poetry", "run", "flask", "run", "--host=0.0.0.0", "--port=5000"]
