@@ -7,21 +7,8 @@ steps:
       - |
         pip install poetry
         poetry install
-  
-  # Step 2: Run Pylint
-  - name: 'python:3.9'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        poetry run pylint app.py model_loader.py
-  
-  # Step 3: Run Unit Tests with pytest
-  - name: 'python:3.9'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
+        poetry run pylint flask_app.py streamlit_app.py model_loader.py
         poetry run pytest --cov=.
-  
 timeout: "1200s"  # Optional: Increase timeout if needed
+options:
+  logging: CLOUD_LOGGING_ONLY
