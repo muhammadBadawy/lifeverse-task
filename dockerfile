@@ -22,4 +22,4 @@ RUN poetry run python -c "from model_loader import initialize_model; initialize_
 EXPOSE 5000
 
 # Set the command to run the Flask app
-CMD ["poetry", "run", "flask", "run", "--host=0.0.0.0", "--port=5000"]
+CMD ["poetry", "run", "python", "flask_app.py", "--host=0.0.0.0", "--port=5000"]
