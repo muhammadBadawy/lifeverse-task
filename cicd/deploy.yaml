@@ -8,7 +8,11 @@ steps:
           --image $_IMAGE \
           --platform managed \
           --region $_REGION \  # Change to your preferred region
-          --allow-unauthenticated  # Remove if authentication is needed
+          --allow-unauthenticated \  # Remove if authentication is needed
+          --port $_PORT \
+          --cpu 1 \
+          --memory 512Mi \
+          --max-instances 5
 
 timeout: 1200s  # Set the timeout for the build process
 options:
