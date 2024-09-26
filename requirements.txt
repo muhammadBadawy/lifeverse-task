@@ -75,3 +75,4 @@ urllib3==2.2.3 ; python_version >= "3.9" and python_full_version != "3.9.7" and 
 watchdog==4.0.2 ; python_version >= "3.9" and python_full_version != "3.9.7" and python_version < "4.0" and platform_system != "Darwin"
 werkzeug==3.0.4 ; python_version >= "3.9" and python_full_version != "3.9.7" and python_version < "4.0"
 zipp==3.20.2 ; python_version >= "3.9" and python_full_version != "3.9.7" and python_version < "3.10"
+gunicorn
