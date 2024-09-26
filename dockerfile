@@ -16,6 +16,7 @@ RUN python -c "from model_loader import initialize_model; initialize_model()"
 
 # Expose the port Flask will run on
 EXPOSE 5000
+ENV PORT 5000
 
 # Set the command to run the Flask app
-CMD ["python", "flask_app.py", "--host=0.0.0.0", "--port=5000"]
+CMD exec gunicorn --bind :5000 flask_app:app --workers 1 --threads 1 --timeout 60
