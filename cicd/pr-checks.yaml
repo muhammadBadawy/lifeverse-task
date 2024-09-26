@@ -5,11 +5,10 @@ steps:
     args:
       - '-c'
       - |
-        pip install poetry
-        poetry install
+        pip install -r requirements.txt
         export PYTHONPATH=$(pwd)
-        poetry run pylint --disable=R,C --fail-under=7 flask_app.py streamlit_app.py model_loader.py
-        poetry run pytest --maxfail=1 --disable-warnings
+        pylint --disable=R,C --fail-under=7 flask_app.py streamlit_app.py model_loader.py
+        pytest --maxfail=1 --disable-warnings
 timeout: "1200s"  # Optional: Increase timeout if needed
 options:
   logging: CLOUD_LOGGING_ONLY
