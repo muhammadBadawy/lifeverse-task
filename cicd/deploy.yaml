@@ -1,0 +1,15 @@
+steps:
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        gcloud run deploy $_SERVICE_NAME \
+          --image $_IMAGE \
+          --platform managed \
+          --region $_REGION \  # Change to your preferred region
+          --allow-unauthenticated  # Remove if authentication is needed
+
+timeout: 1200s  # Set the timeout for the build process
+options:
+  logging: CLOUD_LOGGING_ONLY
