@@ -10,9 +10,9 @@ steps:
           --region $_REGION \  # Change to your preferred region
           --allow-unauthenticated \  # Remove if authentication is needed
           --port $_PORT \
-          --cpu 1 \
-          --memory 512Mi \
-          --max-instances 5
+          --cpu 2 \
+          --memory 4096Mi \
+          --max-instances 1
 
 timeout: 1200s  # Set the timeout for the build process
 options:
