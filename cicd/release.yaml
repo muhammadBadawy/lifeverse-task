@@ -18,3 +18,5 @@ images:
   - 'us-central1-docker.pkg.dev/$_PROJECT_ID/lifeverse/animal_classifier:latest'  # Update with your repo and image name
 
 timeout: '1200s'  # Optional: Increase timeout if needed
+options:
+  logging: CLOUD_LOGGING_ONLY
