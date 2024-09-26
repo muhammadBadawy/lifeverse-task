@@ -16,10 +16,6 @@ transform = transforms.Compose([
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
 ])
 
-# Load ImageNet labels for classification
-with open("imagenet_classes.txt") as f:
-    labels = [line.strip() for line in f.readlines()]
-
 @app.route('/classify', methods=['POST'])
 def classify_image():
     if 'file' not in request.files:
