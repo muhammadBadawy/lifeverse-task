@@ -16,10 +16,6 @@ transform = transforms.Compose([
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
 ])
 
-# Load ImageNet labels for classification
-with open("imagenet_classes.txt") as f:
-    labels = [line.strip() for line in f.readlines()]
-
 def classify_image(image: Image.Image):
     """Classifies the given image using the pre-trained ResNet model."""
     if image.mode == 'RGBA':
