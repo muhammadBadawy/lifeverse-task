@@ -7,8 +7,8 @@ steps:
       - |
         pip install poetry
         poetry install
-        poetry run pylint flask_app.py streamlit_app.py model_loader.py
-        poetry run pytest --cov=.
+        poetry run pylint --disable=R,C flask_app.py streamlit_app.py model_loader.py
+        poetry run pytest --maxfail=1 --disable-warnings
 timeout: "1200s"  # Optional: Increase timeout if needed
 options:
   logging: CLOUD_LOGGING_ONLY

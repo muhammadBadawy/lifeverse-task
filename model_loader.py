@@ -2,13 +2,10 @@ import os
 import requests
 import torch
 from torchvision import models
-import json
+from dotenv import load_dotenv
 
-def load_config(config_file='config.json'):
-    """Load configuration from the JSON file."""
-    with open(config_file, 'r') as f:
-        config = json.load(f)
-    return config
+# Load environment variables from .env file
+load_dotenv()
 
 def download_file(url, file_path):
     """Downloads a file from a URL to the given file path."""
@@ -57,11 +54,10 @@ def load_labels(label_path):
 
 # Main function to handle model download and loading
 def initialize_model():
-    config = load_config()
-    model_name = config['model']['name']
-    model_url = config['model']['url']
-    label_url = config['model']['label_url']
-    model_dir = config['model']['model_dir']
+    model_name = os.getenv("MODEL_NAME")
+    model_url = os.getenv("MODEL_URL")
+    label_url = os.getenv("LABEL_URL")
+    model_dir = os.getenv("MODEL_DIR")
 
     model_path, label_path = download_model_and_labels(model_name, model_url, label_url, model_dir)
     model = load_model(model_name, model_path)

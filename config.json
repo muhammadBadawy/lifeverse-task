@@ -1,8 +1,0 @@
-{
-  "model": {
-    "name": "resnet18",
-    "url": "https://download.pytorch.org/models/resnet18-5c106cde.pth",
-    "label_url": "https://raw.githubusercontent.com/pytorch/hub/master/imagenet_classes.txt",
-    "model_dir": "models/"
-  }
-}
