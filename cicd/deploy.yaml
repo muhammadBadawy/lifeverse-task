@@ -7,8 +7,8 @@ steps:
         gcloud run deploy $_SERVICE_NAME \
           --image $_IMAGE \
           --platform managed \
-          --region $_REGION \  # Change to your preferred region
-          --allow-unauthenticated \  # Remove if authentication is needed
+          --region $_REGION \
+          --allow-unauthenticated \
           --port $_PORT \
           --cpu 2 \
           --memory 4096Mi \
