@@ -2,6 +2,11 @@
 
 This repository contains an animal classification web application that uses a pre-trained ResNet model for classifying images. The project is built using Flask, with separate unit tests using `pytest` and Continuous Integration/Continuous Deployment (CI/CD) pipelines for Google Cloud Build. 
 
+app endpoint:
+```
+https://animal-classifier-643608676299.us-central1.run.app/classify
+```
+
 ## Table of Contents
 - [Application Overview](#application-overview)
 - [Requirements](#requirements)
